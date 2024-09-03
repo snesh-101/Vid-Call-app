@@ -1,15 +1,24 @@
-const socket = io("/");
+// const socket = io("/");
+const socket = io('https://vid-call-app.onrender.com/'); // Use your deployed URL
+
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
 myVideo.muted = true;
 
 const user = prompt("Enter your name");
 
-var peer = new Peer({
-  host: '127.0.0.1',
-  port: 3030,
-  path: '/peerjs',
+// var peer = new Peer({
+//   host: '127.0.0.1',
+//   port: 3030,
+//   path: '/peerjs',
+// });
+var peer = new Peer(undefined, {
+  host: 'https://vid-call-app.onrender.com/', // Your deployed URL
+  port: 443, // Use port 443 for HTTPS
+  path: '/peerjs', // The path set for PeerJS in your server
+  secure: true, // Ensure secure connection
 });
+
 
 let myVideoStream;
 navigator.mediaDevices
